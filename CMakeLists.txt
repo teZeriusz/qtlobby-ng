@@ -21,6 +21,21 @@ mark_as_advanced(BUILDBOT)
 
 option(TRANSLATIONS "Create .qm files" ON)
 
+
+set(QT_BINARY_DIR "/home/t0/qtsdk-2010.05/qt/bin")
+set(QT_LIBRARY_DIR "/home/t0/qtsdk-2010.05/qt/lib")
+set(QT_INCLUDE_DIR "/home/t0/qtsdk-2010.05/qt/include")
+
+set(QT_QTCORE_INCLUDE_DIR "/home/t0/qtsdk-2010.05/qt/include/QtCore")
+set(QT_QTDBUS_INCLUDE_DIR "/home/t0/qtsdk-2010.05/qt/include/QtDBus")
+set(QT_QTGUI_INCLUDE_DIR "/home/t0/qtsdk-2010.05/qt/include/QtGui")
+set(QT_QTNETWORK_INCLUDE_DIR "/home/t0/qtsdk-2010.05/qt/include/QtNetwork")
+set(QT_QTOPENGL_INCLUDE_DIR "/home/t0/qtsdk-2010.05/qt/include/QtOpenGL")
+set(QT_QTSCRIPT_INCLUDE_DIR "/home/t0/qtsdk-2010.05/qt/include/QtScript")
+set(QT_QTSQL_INCLUDE_DIR "/home/t0/qtsdk-2010.05/qt/include/QtSql")
+set(QT_QTXML_INCLUDE_DIR "/home/t0/qtsdk-2010.05/qt/include/QtXml")
+
+
 set(QT_USE_QTCORE true)
 set(QT_USE_QTGUI true)
 set(QT_USE_QTSCRIPT true)
@@ -28,6 +43,17 @@ set(QT_USE_QTNETWORK true)
 set(QT_USE_QTOPENGL true)
 set(QT_USE_QTXML true)
 set(QT_USE_QTSQL true)
+
+find_package(OpenGL)
+
+if(NOT OPENGL_FOUND)
+  message("opengl not found!")
+endif(NOT OPENGL_FOUND)
+
+if(NOT OPENGL_GLU_FOUND)
+  message("GLU not found!")
+endif(NOT OPENGL_GLU_FOUND)
+
 
 if(WIN32 OR BUILDBOT)
   option(PURE_WINAPI_UNITSYNC_LOADER "Use pure Win API unitsync loader(helps against some loading bugs)" ON)
